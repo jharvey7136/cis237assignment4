@@ -6,65 +6,89 @@ using System.Threading.Tasks;
 
 namespace cis237assignment4
 {
-    //Abstract class that implements the IDroid interface
     abstract class Droid : IDroid
     {
-        //some protected variables for the class
-        protected string material;
-        protected string model;
-        protected string color;
+        public string material;
+        public string model;
+        public string color;
+        public string costString;
+        public decimal materialCost = 0;
+        public decimal modelCost = 0;
+        public decimal colorCost = 0;
+        public decimal baseCost;
+        public decimal totalCost;
 
-        protected decimal baseCost;
-        protected decimal totalCost;
-
-        //The public property for TotalCost
-        public decimal TotalCost
+        //Properties
+        public virtual decimal TotalCost
         {
             get { return totalCost; }
             set { totalCost = value; }
         }
 
-        //Constructor that takes the main 3 parameters shared amongst all 4 types of droids
+        public string Material
+        {
+            get { return material; }
+            set { material = value; }
+        }
+
+        public string Model
+        {
+            get { return model; }
+            set { model = value; }
+        }
+
+        public string Color
+        {
+            get { return color; }
+            set { color = value; }
+        }
+
+        //Costructor to set material, model, and color costs
         public Droid(string Material, string Model, string Color)
         {
             this.material = Material;
             this.model = Model;
             this.color = Color;
+
+            if (material == "Iron")
+                materialCost = 150;
+            if (material == "Steel")
+                materialCost = 200;
+
+            if (model == "Protocol")
+                modelCost = 1000;
+            if (model == "Utility")
+                modelCost = 750;
+            if (model == "Janitor")
+                modelCost = 500;
+            if (model == "Astromech")
+                modelCost = 250;
+
+            if (color == "White")
+                colorCost = 75;
+            if (color == "Black")
+                colorCost = 100;
         }
 
-        //Virtual method that can be overridden in the derived classes if needed.
-        //This implementation calculates the cost based on the material used for the droid
-        protected virtual void CalculateBaseCost()
+        //***************METHOD TO CALCULATE BASE COST**************//
+        public virtual void CalculateBaseCost()
         {
-            switch (this.material)
-            {
-                case "Carbonite":
-                    this.baseCost = 100.00m;
-                    break;
-
-                case "Vanadium":
-                    this.baseCost = 120.00m;
-                    break;
-
-                case "Quadranium":
-                    this.baseCost = 150.00m;
-                    break;
-
-                default:
-                    this.baseCost = 50.00m;
-                    break;
-            }
+            baseCost = materialCost + modelCost + colorCost;
         }
+        //***************END METHOD TO CALCULATE BASE COST**************//
 
-        //Abstract method that MUST be overriden in the derived class to calculate the total cost
-        public abstract void CalculateTotalCost();
+        //***************METHOD TO CALCULATE TOTAL COST**************//
+        public virtual void CalculateTotalCost()
+        {
+            totalCost += baseCost;
+        }
+        //***************END METHOD TO CALCULATE TOTAL COST**************//
 
-        //Overriden toString method that will return a string representing the basic information for any droid
+        //**************METHOD THAT OVERRIDES TOSTRING****************//
         public override string ToString()
         {
-            return "Material: " + this.material + Environment.NewLine +
-                    "Model: " + this.model + Environment.NewLine +
-                    "Color: " + this.color + Environment.NewLine;
+            return this.Material + " " + this.Model + " " + this.Color;
         }
+        //**************END METHOD THAT OVERRIDES TOSTRING****************//
     }
 }
