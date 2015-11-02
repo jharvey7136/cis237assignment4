@@ -8,6 +8,18 @@ namespace cis237assignment4
 {
     class UserInterface
     {
+        //Variables for generating random dummy droids
+        private string dummyMaterial = "";
+        private string dummyColor = "";
+        private bool dummyToolBox;
+        private bool dummyCompConnection;
+        private bool dummyArm;
+        private bool dummyFireExt;
+        private bool dummyTrash;
+        private bool dummyVac;
+        private int dummyNumLangs;
+        private int dummyShipsInt;
+
         //Menu and Droid Selection Variables
         private int menuSelection;
         private int droidSelection;
@@ -37,6 +49,8 @@ namespace cis237assignment4
 
         DroidCollection droidCollection = new DroidCollection(50);
 
+
+
         public UserInterface()
         {
         }
@@ -44,12 +58,22 @@ namespace cis237assignment4
         //*********************MAIN MENU METHOD**************************//
         public void MainMenu()
         {
-            while (menuSelection != 1 || menuSelection != 2 || menuSelection != 3)
+
+
+            Console.WriteLine("Welcome to the Jawas on Tatooine Droid Program\n");
+
+
+
+            AddDummyData(); //Call method to add hard-coded dummy data to DroidCollection
+
+            while (menuSelection != 1 || menuSelection != 2 || menuSelection != 3 || menuSelection != 4 || menuSelection != 5)
             {
-                Console.WriteLine("Welcome to the Jawas on Tatooine Droid Program\n");
+                Console.WriteLine("Main Menu\n");
                 Console.WriteLine("1 - Add Droid");
-                Console.WriteLine("2 - Print Droid List");
-                Console.WriteLine("3 - Exit\n");
+                Console.WriteLine("2 - Sort Droid List By Model");
+                Console.WriteLine("3 - Sort Droid List By Total Cost");
+                Console.WriteLine("4 - Print Current Droid List");
+                Console.WriteLine("5 - Exit\n");
                 Console.Write("Enter Number: ");
                 try
                 {
@@ -58,11 +82,22 @@ namespace cis237assignment4
                     if (menuSelection == 1)
                         AddDroid();
                     if (menuSelection == 2)
-                        PrintDroidList();
+                    {
+                        //Add code to sort list by model
+                    }
+
                     if (menuSelection == 3)
+                    {
+                        //Add code to sort list by total cost
+                    }
+                    if (menuSelection == 4)
+                        PrintDroidList();
+
+
+                    if (menuSelection == 5)
                         Environment.Exit(0);
-                    if (menuSelection > 3 || menuSelection < 1)
-                        Console.WriteLine("Input Must Be Integer Between 1 - 3");
+                    if (menuSelection > 5 || menuSelection < 1)
+                        Console.WriteLine("*Input Must Be Integer Between 1 - 5*\n");
                 }
                 catch
                 {
@@ -202,8 +237,123 @@ namespace cis237assignment4
 
 
 
+        ////*********************METHOD TO ADD HARD-CODED DUMMY DATA TO DROID COLLECTION***********************//
+        public void AddDummyData()
+        {
+
+            Random random = new Random();
+
+            for (int i = 0; i < 20; i++)
+            {
+                int randomModelInt = random.Next(1, 5);
+                int randomMaterialInt = random.Next(1, 3);
+                int randomColorInt = random.Next(1, 3);
+                int randomToolInt = random.Next(1, 3);
+                int randomCompInt = random.Next(1, 3);
+                int randomArmInt = random.Next(1, 3);
+                int randomTrashInt = random.Next(1, 3);
+                int randomVacInt = random.Next(1, 3);
+                int randomFireInt = random.Next(1, 3);
+
+                //Random Material Selection
+                if (randomMaterialInt == 1)
+                    dummyMaterial = "Iron";
+                if (randomMaterialInt == 2)
+                    dummyMaterial = "Steel";
+
+                //Random Color Selection
+                if (randomColorInt == 1)
+                    dummyColor = "White";
+                if (randomColorInt == 2)
+                    dummyColor = "Black";
+
+                //Random Toolbox Selection
+                if (randomToolInt == 1)
+                    dummyToolBox = true;
+                if (randomToolInt == 2)
+                    dummyToolBox = false;
+
+                //Random Computer Connection Selection
+                if (randomCompInt == 1)
+                    dummyCompConnection = true;
+                if (randomCompInt == 2)
+                    dummyCompConnection = false;
+
+                //Random Arm Selection
+                if (randomArmInt == 1)
+                    dummyArm = true;
+                if (randomArmInt == 2)
+                    dummyArm = false;
+
+                //Random Trash Selection
+                if (randomTrashInt == 1)
+                    dummyTrash = true;
+                if (randomTrashInt == 2)
+                    dummyTrash = false;
+
+                //Random Vacuum Selection
+                if (randomVacInt == 1)
+                    dummyVac = true;
+                if (randomVacInt == 2)
+                    dummyVac = false;
+
+                //Random Fire Ext Selection
+                if (randomFireInt == 1)
+                    dummyFireExt = true;
+                if (randomFireInt == 2)
+                    dummyFireExt = false;
+
+                //Random Number Languauges
+                dummyNumLangs = random.Next(1, 9);
+
+                //Random Number of Ships
+                dummyShipsInt = random.Next(1, 6);
+
+                //Droid Utility Dummy
+                if (randomModelInt == 1)
+                {
+                    Droid utilityDummy = new Utility(dummyMaterial, "Utility", dummyColor, dummyToolBox, dummyCompConnection, dummyArm);
+                    droidCollection.AddNewDroid(utilityDummy);
+                    utilityDummy.CalculateBaseCost();
+                    utilityDummy.CalculateTotalCost();
+                    totalCost += utilityDummy.totalCost;
+                }
+
+                //Droid Protocol Dummy
+                if (randomModelInt == 2)
+                {
+                    Droid protoDummy = new Protocol(dummyMaterial, "Protocol", dummyColor, dummyNumLangs);
+                    droidCollection.AddNewDroid(protoDummy);
+                    protoDummy.CalculateBaseCost();
+                    protoDummy.CalculateTotalCost();
+                    totalCost += protoDummy.totalCost;
+                }
 
 
+                //Droid Janitorial Dummy
+                if (randomModelInt == 3)
+                {
+                    Droid janDummy = new Janitorial(dummyMaterial, "Janitor", dummyColor, dummyToolBox, dummyCompConnection, dummyArm, dummyTrash, dummyVac);
+                    droidCollection.AddNewDroid(janDummy);
+                    janDummy.CalculateBaseCost();
+                    janDummy.CalculateTotalCost();
+                    totalCost += janDummy.totalCost;
+                }
+
+                //Droid Astromech Dummy
+                if (randomModelInt == 4)
+                {
+                    Droid astroDummy = new Astromech(dummyMaterial, "Astromech", dummyColor, dummyToolBox, dummyCompConnection, dummyArm, dummyFireExt, dummyShipsInt);
+                    droidCollection.AddNewDroid(astroDummy);
+                    astroDummy.CalculateBaseCost();
+                    astroDummy.CalculateTotalCost();
+                    totalCost += astroDummy.totalCost;
+                }
+            }
+
+
+        }
+        //*********************END METHOD TO ADD HARD-CODED DUMMY DATA TO DROID COLLECTION***********************//
 
 
 
@@ -425,9 +575,10 @@ namespace cis237assignment4
         //*********************PRINT DROID LIST METHOD**********************//
         public void PrintDroidList()
         {
-            Console.Write("*********Droid Collection**********");
+            Console.Write("Droid Collection\n");
             string[] allItems = droidCollection.GetPrintStringForAllItems();
             droidCollection.DisplayAllDroids(allItems);
+            Console.WriteLine();
             Console.WriteLine("Total Cost = $" + totalCost);
             Console.WriteLine();
 

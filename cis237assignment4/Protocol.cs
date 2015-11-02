@@ -45,7 +45,7 @@ namespace cis237assignment4
         //**************METHOD THAT OVERRIDES TOSTRING****************//
         public override string ToString()
         {
-            return this.Material + " - " + this.Model + " - " + this.Color + " - " + numberLanguages + " language(s) for $" + costString;
+            return this.Material.PadRight(8) + this.Model.PadRight(15) + this.Color.PadRight(95) + numberLanguages + " language(s)".PadRight(15) + "$" + costString.PadLeft(5);
         }
         //**************END METHOD THAT OVERRIDES TOSTRING****************//
 

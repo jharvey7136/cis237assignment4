@@ -50,8 +50,8 @@ namespace cis237assignment4
         //**************METHOD THAT OVERRIDES TOSTRING****************//
         public override string ToString()
         {
-            return this.Material + " - " + this.Model + " - " + this.Color + " - " + toolBoxYesNo + " - " + computerConnectionYesNo + " - " + armYesNo + " - " +
-                fireExtinguisherYesNo + " - with " + numberShips.ToString() + " ship(s)" + " for $" + costString;
+            return this.Material.PadRight(8) + this.Model.PadRight(15) + this.Color.PadRight(9) + toolBoxYesNo.PadRight(18) + computerConnectionYesNo.PadRight(28) + armYesNo.PadRight(12) +
+                fireExtinguisherYesNo.PadRight(28) + numberShips.ToString() + " ship(s)".PadRight(15) + "$" + costString.PadLeft(5);
         }
         //**************END METHOD THAT OVERRIDES TOSTRING****************//
 
