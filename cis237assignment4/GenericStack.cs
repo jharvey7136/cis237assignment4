@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace cis237assignment4
 {
-    interface IDroid : IComparable<Droid>
+    class GenericStack
     {
-        void CalculateTotalCost();
-
-        decimal TotalCost { get; set; }
-
-
     }
 }

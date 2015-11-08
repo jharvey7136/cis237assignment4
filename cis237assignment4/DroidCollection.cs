@@ -8,8 +8,15 @@ namespace cis237assignment4
 {
     class DroidCollection
     {
+
+        IComparable[] sortCollection = new IComparable[50]; 
         Droid[] droidCollection;
         int droidCollectionLength;
+
+        MergeSort merge;
+        
+
+        
 
 
         //***************METHOD TO CREATE NEW DROID COLLECTION ARRAY***************//
@@ -28,6 +35,29 @@ namespace cis237assignment4
             droidCollectionLength++;
         }
         //*******************END METHOD TO ADD NEW DROID TO COLLECTION**************//
+
+
+
+        public void MergeSort()
+        {
+            merge = new MergeSort();
+
+            merge.sort(sortCollection);
+            
+
+            
+        }
+
+        public void BucketSort()
+        {
+
+        }
+
+
+
+
+
+
 
 
         //****************METHOD TO GET PRINT STRING FOR ALL ITEMS********************//
@@ -62,6 +92,8 @@ namespace cis237assignment4
             }
         }
         //****************END METHOD TO DISPLAY ALL DROIDS**********************//
+
+
 
 
     }

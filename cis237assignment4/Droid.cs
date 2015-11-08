@@ -90,5 +90,14 @@ namespace cis237assignment4
             return this.Material + " " + this.Model + " " + this.Color;
         }
         //**************END METHOD THAT OVERRIDES TOSTRING****************//
+
+
+
+        public int CompareTo(Droid other)
+        {
+            return this.baseCost.CompareTo(other.baseCost);
+        }
+
+
     }
 }
