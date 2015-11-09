@@ -30,7 +30,8 @@ namespace cis237assignment4
 
 
         public void merge(IComparable[] a, IComparable[] aux, int lo, int mid, int hi)
-        {                                  // Merge a[lo..mid] with a[mid+1..hi].
+        {
+                                  // Merge a[lo..mid] with a[mid+1..hi].
             int i = lo;
             int j = mid + 1;
 
@@ -49,7 +50,7 @@ namespace cis237assignment4
                 {
                     a[k] = aux[i++];
                 }
-                else if (aux[j].CompareTo(aux[i]) < 0)
+                else if (aux[j].CompareTo(aux[i]) < 0) //GETTING NULL EXCEPTION ERROR HERE
                 {
                     a[k] = aux[j++];
                 }

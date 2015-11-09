@@ -97,9 +97,9 @@ namespace cis237assignment4
         {
             Droid otherDroid = (Droid)obj;
 
-            decimal thisTotalCost = this.baseCost;
+            decimal thisTotalCost = this.TotalCost;
 
-            decimal otherTotalCost = otherDroid.baseCost;
+            decimal otherTotalCost = otherDroid.TotalCost;
 
             return thisTotalCost.CompareTo(otherTotalCost);
         }

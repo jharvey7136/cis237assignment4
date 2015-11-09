@@ -47,7 +47,7 @@ namespace cis237assignment4
 
         private decimal totalCost = 0;
 
-        DroidCollection droidCollection = new DroidCollection(50);
+        DroidCollection droidCollection = new DroidCollection(30);
 
 
 
@@ -75,6 +75,9 @@ namespace cis237assignment4
                 Console.WriteLine("4 - Print Current Droid List");
                 Console.WriteLine("5 - Exit\n");
                 Console.Write("Enter Number: ");
+
+                
+
                 try
                 {
                     menuSelection = int.Parse(Console.ReadLine());
@@ -84,11 +87,12 @@ namespace cis237assignment4
                     if (menuSelection == 2)
                     {
                         droidCollection.BucketSort();
+                        Console.WriteLine("Droid List Has Been Sorted By Model\n");
                     }
-
                     if (menuSelection == 3)
                     {
                         droidCollection.MergeSort();
+                        Console.WriteLine("Droid List Has Been Sorted By Total Cost\n");
                     }
                     if (menuSelection == 4)
                         PrintDroidList();

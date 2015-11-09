@@ -9,11 +9,11 @@ namespace cis237assignment4
     class DroidCollection
     {
 
-        IComparable[] sortCollection = new IComparable[50]; 
+        
         Droid[] droidCollection;
         int droidCollectionLength;
 
-        MergeSort merge;
+        Droid[] auxCollection;
 
         GenericStack<Droid> protocolStack = new GenericStack<Droid>();
         GenericStack<Droid> astromechStack = new GenericStack<Droid>();
@@ -66,10 +66,19 @@ namespace cis237assignment4
 
         public void MergeSort()
         {
-            merge = new MergeSort();
+            MergeSort merge = new MergeSort();
 
-            merge.sort(droidCollection);          
 
+            foreach (Droid droid in droidCollection) //THIS IS NOT PROPERLY TESTING FOR NULLS. CONTINUES TO FILL THE AUXCOLLECTION WITH EMPTY DROIDS
+            {
+                if (droid != null)
+                {
+                    auxCollection = droidCollection;
+                }
+            }
+
+            merge.sort(auxCollection);          
+            
             
         }
 
@@ -94,9 +103,9 @@ namespace cis237assignment4
                 genericQueue.Enqueue(x.Data);
             }
 
-            for (int i = 0; i <= droidCollection.Length; i++)
+            for (int i = 0; i <= droidCollection.Length; i++)  //THIS LOOP IS NOT PROPERLY DEQUEUEING AND REWRITING THE DROIDCOLLECTION ARRAY
             {
-                droidCollection[i] = genericQueue.Dequeue();
+                droidCollection[i] = genericQueue.Dequeue;
             }
 
             
