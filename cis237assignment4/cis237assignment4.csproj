@@ -44,6 +44,7 @@
     <Compile Include="Astromech.cs" />
     <Compile Include="Droid.cs" />
     <Compile Include="DroidCollection.cs" />
+    <Compile Include="GenericNode.cs" />
     <Compile Include="GenericQueue.cs" />
     <Compile Include="GenericStack.cs" />
     <Compile Include="IDroid.cs" />

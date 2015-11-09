@@ -93,9 +93,15 @@ namespace cis237assignment4
 
 
 
-        public int CompareTo(Droid other)
+        public int CompareTo(object obj)
         {
-            return this.baseCost.CompareTo(other.baseCost);
+            Droid otherDroid = (Droid)obj;
+
+            decimal thisTotalCost = this.baseCost;
+
+            decimal otherTotalCost = otherDroid.baseCost;
+
+            return thisTotalCost.CompareTo(otherTotalCost);
         }
 
 

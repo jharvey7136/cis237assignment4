@@ -62,7 +62,7 @@ namespace cis237assignment4
 
             Console.WriteLine("Welcome to the Jawas on Tatooine Droid Program\n");
 
-
+            
 
             AddDummyData(); //Call method to add hard-coded dummy data to DroidCollection
 
@@ -83,17 +83,15 @@ namespace cis237assignment4
                         AddDroid();
                     if (menuSelection == 2)
                     {
-                        //Add code to sort list by model
+                        droidCollection.BucketSort();
                     }
 
                     if (menuSelection == 3)
                     {
-                        //Add code to sort list by total cost
+                        droidCollection.MergeSort();
                     }
                     if (menuSelection == 4)
                         PrintDroidList();
-
-
                     if (menuSelection == 5)
                         Environment.Exit(0);
                     if (menuSelection > 5 || menuSelection < 1)
@@ -102,7 +100,7 @@ namespace cis237assignment4
                 catch
                 {
                     Console.WriteLine();
-                    Console.WriteLine("Input Error");
+                    Console.WriteLine("Input Error\n");
                 }
             }
         }
