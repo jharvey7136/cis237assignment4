@@ -92,9 +92,9 @@ namespace cis237assignment4
         //**************END METHOD THAT OVERRIDES TOSTRING****************//
 
 
-
-        public int CompareTo(object obj)
-        {
+        
+        public int CompareTo(object obj)         //CompareTo method which must be implemented when inheriting from IComparable.
+        {                                        //This method will compare the total costs between two droids which will aid the merge sort.
             Droid otherDroid = (Droid)obj;
 
             decimal thisTotalCost = this.TotalCost;

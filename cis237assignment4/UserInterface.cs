@@ -86,13 +86,27 @@ namespace cis237assignment4
                         AddDroid();
                     if (menuSelection == 2)
                     {
-                        droidCollection.BucketSort();
-                        Console.WriteLine("Droid List Has Been Sorted By Model\n");
+                        try
+                        {
+                            droidCollection.BucketSort();
+                            Console.WriteLine("Sort Successful\n");
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Sort Unsuccessful\n");
+                        }
                     }
                     if (menuSelection == 3)
                     {
-                        droidCollection.MergeSort();
-                        Console.WriteLine("Droid List Has Been Sorted By Total Cost\n");
+                        try
+                        {
+                            droidCollection.MergeSort();
+                            Console.WriteLine("Sort Successful\n");
+                        }
+                        catch
+                        {
+                            Console.WriteLine("Sort Unsuccessful\n");
+                        }  
                     }
                     if (menuSelection == 4)
                         PrintDroidList();

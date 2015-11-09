@@ -12,17 +12,22 @@ namespace cis237assignment4
         
         Droid[] droidCollection;
         int droidCollectionLength;
+        int highestIndex;              //this int will increment by 1 with every droid added to collection
+        
 
-        Droid[] auxCollection;
-
-        GenericStack<Droid> protocolStack = new GenericStack<Droid>();
+        GenericStack<Droid> protocolStack = new GenericStack<Droid>();    //here are the new instances of all the stacks being created
         GenericStack<Droid> astromechStack = new GenericStack<Droid>();
         GenericStack<Droid> janitorialStack = new GenericStack<Droid>();
         GenericStack<Droid> utilityStack = new GenericStack<Droid>();
 
         GenericQueue<Droid> genericQueue = new GenericQueue<Droid>();
 
-        
+
+        public int HighestIndex        //highestindex property to determine amount of valid droid in droid collection array. 
+        {                              //increment by one with each droid added to collection.
+            get { return highestIndex; }
+            set { highestIndex = value; }
+        }
 
         
 
@@ -41,8 +46,9 @@ namespace cis237assignment4
         {
             droidCollection[droidCollectionLength] = newDroid;
             droidCollectionLength++;
+            highestIndex++;   //increment int by one with each droid added to droid collection
 
-            if (newDroid.Model == "Protocol")
+            if (newDroid.Model == "Protocol")      //these statements will push droids onto the appropriate stack
             {
                 protocolStack.Push(newDroid);
             }
@@ -64,24 +70,20 @@ namespace cis237assignment4
 
 
 
+
+        //******************METHOD WHICH WILL MERGE SORT DROID COLLECTION BY TOTAL COST******************//
         public void MergeSort()
         {
-            MergeSort merge = new MergeSort();
+            MergeSort merge = new MergeSort();     //create new instance of MergeSort class
+
+            merge.sort(droidCollection, highestIndex);   //pass in the droid collection, along with the highest index of the array.
+        }                                                //without the highestIndex, the sort could break due to possible null values in the array.
+        //******************END METHOD WHICH WILL MERGE SORT DROID COLLECTION BY TOTAL COST******************//
 
 
-            foreach (Droid droid in droidCollection) //THIS IS NOT PROPERLY TESTING FOR NULLS. CONTINUES TO FILL THE AUXCOLLECTION WITH EMPTY DROIDS
-            {
-                if (droid != null)
-                {
-                    auxCollection = droidCollection;
-                }
-            }
 
-            merge.sort(auxCollection);          
-            
-            
-        }
 
+        //*****************METHOD WHICH WILL USE BUCKET SORT TO SORT DROIDS BY MODEL******************************//
         public void BucketSort()
         {
             //Sort order should be: Astromech, Janitor, Utility, Protocol
@@ -105,12 +107,13 @@ namespace cis237assignment4
 
             for (int i = 0; i <= droidCollection.Length; i++)  //THIS LOOP IS NOT PROPERLY DEQUEUEING AND REWRITING THE DROIDCOLLECTION ARRAY
             {
-                droidCollection[i] = genericQueue.Dequeue;
+                //droidCollection[i] = genericQueue.Dequeue;
             }
 
             
 
         }
+        //*****************END METHOD WHICH WILL USE BUCKET SORT TO SORT DROIDS BY MODEL******************************//
 
 
 

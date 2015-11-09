@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace cis237assignment4
 {
-    class MergeSort
+    class MergeSort      
     {
 
         private IComparable[] aux; // auxiliary array for merges
 
 
         private void sort(IComparable[] a, IComparable[] aux, int lo, int hi)
-        { // Sort a[lo..hi].
+        {                               // Sort a[lo..hi].
             if (hi <= lo) return;
             int mid = lo + (hi - lo) / 2;
             sort(a, aux, lo, mid); // Sort left half.
@@ -22,10 +22,10 @@ namespace cis237assignment4
         }
 
 
-        public void sort(IComparable[] a)
-        {
-            aux = new IComparable[a.Length]; // Allocate space just once.
-            sort(a, aux, 0, a.Length - 1);
+        public void sort(IComparable[] a, int highIndex) //Int highIndex is passed in to determine the length of the aux array being used. 
+        {                                                //Without the int highIndex, the array could possibly have nulls and break the sort.                
+            aux = new IComparable[highIndex]; // Allocate space just once.
+            sort(a, aux, 0, highIndex - 1);
         }
 
 
@@ -50,7 +50,7 @@ namespace cis237assignment4
                 {
                     a[k] = aux[i++];
                 }
-                else if (aux[j].CompareTo(aux[i]) < 0) //GETTING NULL EXCEPTION ERROR HERE
+                else if (aux[j].CompareTo(aux[i]) < 0)
                 {
                     a[k] = aux[j++];
                 }
