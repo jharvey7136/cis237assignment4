@@ -11,45 +11,27 @@ namespace cis237assignment4
 
         //private GenericNode<T> current;
 
-        private GenericNode<T> last;
+        private GenericNode<T> first; //top of stack
+        private int N; //number of items
 
-        public GenericNode<T> Head
+        public bool isEmpty() { return first == null; }
+        public int size() { return N; }
+
+        public void Push(T item)             //add item to top of stack
         {
-            get;
-            set;
+            GenericNode<T> oldfirst = first; //makes backup of the firstNode
+            first = new GenericNode<T>();    //create a new node
+            first.Data = item;               //set the data for the node
+            first.Next = oldfirst;           //set the first.next to the oldFirst backup
+            N++;                             //increment the size
         }
 
-        public GenericStack()
+        public T Pop()
         {
-            Head = null;
+            T item = first.Data;             //get the data from the first node
+            first = first.Next;              //set the first node to the first nodes next since we are removing the first node
+            N--;
+            return item;
         }
-
-        public void Push(T content)
-        {
-            GenericNode<T> node = new GenericNode<T>();
-            node.Data = content;
-
-            if (Head == null)
-            {
-                Head = node;
-            }
-
-            else
-            {
-                last.Next = node;
-            }
-
-            last = node;
-        }
-
-
-
-
-
-
-
-
-
-
     }
 }

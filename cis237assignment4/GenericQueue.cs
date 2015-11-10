@@ -8,41 +8,33 @@ namespace cis237assignment4
 {
     class GenericQueue<T>
     {
-        private GenericNode<T> last;
-        private GenericNode<T> first;
 
+        private GenericNode<T> first;   //link to least recently added node
+        private GenericNode<T> last;    //link to most recently added node
+        private int N;                  //number of items on queue
 
-        //private int N;
+        public bool isEmpty() { return first == null; }
+        public int size() { return N; }
 
-        //public GenericNode<T> Head
-        //{
-        //    get;
-        //    set;
-        //}
-
-
-        public void Enqueue(T content)
-        {
-            GenericNode<T> oldLast = last;
-            first = new GenericNode<T>();
-            first.Data = content;
-            first.Next = last;
-
+        public void Enqueue(T item)
+        {                                          //Add item to the end of the list.
+            GenericNode<T> oldlast = last;         //Backup the last node
+            last = new GenericNode<T>();           //create a new node as the new last
+            last.Data = item;                      //Set the 'data' on the node
+            last.Next = null;                      //Set the last.next to null
+            if (isEmpty()) first = last;           //Do a empty check. True when first putting something into the queue
+            else oldlast.Next = last;              //set the oldLast's next to the new node
+            N++;                                   //increment the size
         }
 
-        public T Dequeue()     //IS NOT PROPERLY DEQUEUEING
+
+        public T Dequeue()
         {
-            T data = first.Data;
-            first = first.Next;
-            return data;
-        }
-
-        
-
-
-
-
-
-
+            T item = first.Data;        //Get the data off the node
+            first = first.Next;         //Set first to first's next
+            if (isEmpty()) last = null; //If empty, make last = null;
+            N--;                        //decrement that size
+            return item;                //return the data
+        }   
     }
 }

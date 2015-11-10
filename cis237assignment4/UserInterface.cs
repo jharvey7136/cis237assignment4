@@ -73,7 +73,8 @@ namespace cis237assignment4
                 Console.WriteLine("2 - Sort Droid List By Model");
                 Console.WriteLine("3 - Sort Droid List By Total Cost");
                 Console.WriteLine("4 - Print Current Droid List");
-                Console.WriteLine("5 - Exit\n");
+                Console.WriteLine("5 - Reset Droid List: Populates List With Random Droids For Testing");
+                Console.WriteLine("6 - Exit\n");
                 Console.Write("Enter Number: ");
 
                 
@@ -89,7 +90,7 @@ namespace cis237assignment4
                         try
                         {
                             droidCollection.BucketSort();
-                            Console.WriteLine("Sort Successful\n");
+                            Console.WriteLine("Sort Successful, Press 4 To See Sorted Droid List\n");
                         }
                         catch
                         {
@@ -101,7 +102,7 @@ namespace cis237assignment4
                         try
                         {
                             droidCollection.MergeSort();
-                            Console.WriteLine("Sort Successful\n");
+                            Console.WriteLine("Sort Successful, Press 4 To See Sorted Droid List\n");
                         }
                         catch
                         {
@@ -110,9 +111,15 @@ namespace cis237assignment4
                     }
                     if (menuSelection == 4)
                         PrintDroidList();
+
                     if (menuSelection == 5)
+                    {
+                        ResetList();
+                    }
+
+                    if (menuSelection == 6)
                         Environment.Exit(0);
-                    if (menuSelection > 5 || menuSelection < 1)
+                    if (menuSelection > 6 || menuSelection < 1)
                         Console.WriteLine("*Input Must Be Integer Between 1 - 5*\n");
                 }
                 catch
@@ -372,13 +379,6 @@ namespace cis237assignment4
         //*********************END METHOD TO ADD HARD-CODED DUMMY DATA TO DROID COLLECTION***********************//
 
 
-
-
-
-
-
-
-
         //************METHOD FOR ADDING DROID OPTIONS BASED ON MODEL SELECTED**************//
         public void DroidOptions(string Model)
         {
@@ -587,6 +587,26 @@ namespace cis237assignment4
 
         }
         //************END METHOD FOR ADDING DROID OPTIONS BASED ON MODEL SELECTED**************//
+
+
+        //*******************SMALL METHOD USED TO RESET THE DROID LIST FOR TESTING*******************//
+        public void ResetList()
+        {
+            try
+            {
+                droidCollection = new DroidCollection(30);
+                totalCost = 0;
+                AddDummyData();
+                Console.WriteLine("Fresh, Random Droid List Has Been Populated\n");
+            }
+            catch
+            {
+                Console.WriteLine("Reset Unsuccessful");
+            }
+        }
+        //*******************END SMALL METHOD USED TO RESET THE DROID LIST FOR TESTING*******************//
+
+
 
         //*********************PRINT DROID LIST METHOD**********************//
         public void PrintDroidList()
