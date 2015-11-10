@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace cis237assignment4
 {
-    class GenericNode<T>
+    class GenericNode<T> //Generic node class needed for linked list to properly function. Nodes are used in both generic stack and generic queue class
     {
 
         public GenericNode<T> Next
@@ -20,8 +20,5 @@ namespace cis237assignment4
             get;
             set;
         }
-
-
-
     }
 }

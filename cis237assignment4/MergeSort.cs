@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace cis237assignment4
 {
-    class MergeSort      
+    class MergeSort       //class which sorts droids by total cost using a merge sort. 
     {
 
         private IComparable[] aux; // auxiliary array for merges
@@ -16,7 +16,7 @@ namespace cis237assignment4
         {                               // Sort a[lo..hi].
             if (hi <= lo) return;
             int mid = lo + (hi - lo) / 2;
-            sort(a, aux, lo, mid); // Sort left half.
+            sort(a, aux, lo, mid);      // Sort left half.
             sort(a, aux,  mid + 1, hi); // Sort right half.
             merge(a, aux, lo, mid, hi); // Merge results 
         }
@@ -24,14 +24,14 @@ namespace cis237assignment4
 
         public void sort(IComparable[] a, int highIndex) //Int highIndex is passed in to determine the length of the aux array being used. 
         {                                                //Without the int highIndex, the array could possibly have nulls and break the sort.                
-            aux = new IComparable[highIndex]; // Allocate space just once.
+            aux = new IComparable[highIndex];            // Allocate space just once.
             sort(a, aux, 0, highIndex - 1);
         }
 
 
         public void merge(IComparable[] a, IComparable[] aux, int lo, int mid, int hi)
         {
-                                  // Merge a[lo..mid] with a[mid+1..hi].
+                                           // Merge a[lo..mid] with a[mid+1..hi].
             int i = lo;
             int j = mid + 1;
 

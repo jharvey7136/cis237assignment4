@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace cis237assignment4
 {
-    interface IDroid : IComparable
+    interface IDroid : IComparable //inherits from Icomparable to aid in the merge sort
     {
         void CalculateTotalCost();
 

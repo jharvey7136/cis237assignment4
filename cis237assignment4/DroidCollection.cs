@@ -112,9 +112,9 @@ namespace cis237assignment4
                     genericQueue.Enqueue(utilityStack.Pop());
 
                 while (protocolStack.size() != 0)
-                    genericQueue.Enqueue(protocolStack.Pop());                
-                          
+                    genericQueue.Enqueue(protocolStack.Pop());
 
+                bucketCounter = 0;  //set bucketcounter to 0, the following while loop will increment the counter by 1 each time
 
              //This while loop will dequeue all the droids back into the original droidcollection array in the correct order  
                 while (genericQueue.size() != 0)

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace cis237assignment4
 {
-    class GenericQueue<T>
+    class GenericQueue<T> //Generic class to hold the queue of droids. used in the bucket sort
     {
 
         private GenericNode<T> first;   //link to least recently added node

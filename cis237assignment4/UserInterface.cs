@@ -62,11 +62,11 @@ namespace cis237assignment4
 
             Console.WriteLine("Welcome to the Jawas on Tatooine Droid Program\n");
 
-            
+
 
             AddDummyData(); //Call method to add hard-coded dummy data to DroidCollection
 
-            while (menuSelection != 1 || menuSelection != 2 || menuSelection != 3 || menuSelection != 4 || menuSelection != 5)
+            while (menuSelection != 1 || menuSelection != 2 || menuSelection != 3 || menuSelection != 4 || menuSelection != 5 || menuSelection != 6)
             {
                 Console.WriteLine("Main Menu\n");
                 Console.WriteLine("1 - Add Droid");
@@ -77,7 +77,7 @@ namespace cis237assignment4
                 Console.WriteLine("6 - Exit\n");
                 Console.Write("Enter Number: ");
 
-                
+
 
                 try
                 {
@@ -89,7 +89,7 @@ namespace cis237assignment4
                     {
                         try
                         {
-                            droidCollection.BucketSort();
+                            droidCollection.BucketSort();      //This line will call the bucket sort method from the droid collection class, and sort the droid list by Model.                              
                             Console.WriteLine("Sort Successful, Press 4 To See Sorted Droid List\n");
                         }
                         catch
@@ -101,13 +101,13 @@ namespace cis237assignment4
                     {
                         try
                         {
-                            droidCollection.MergeSort();
+                            droidCollection.MergeSort();       //This line will call the merge sort method from the droid collection class, and sort the droid list by Total Cost.
                             Console.WriteLine("Sort Successful, Press 4 To See Sorted Droid List\n");
                         }
                         catch
                         {
                             Console.WriteLine("Sort Unsuccessful\n");
-                        }  
+                        }
                     }
                     if (menuSelection == 4)
                         PrintDroidList();
@@ -120,7 +120,7 @@ namespace cis237assignment4
                     if (menuSelection == 6)
                         Environment.Exit(0);
                     if (menuSelection > 6 || menuSelection < 1)
-                        Console.WriteLine("*Input Must Be Integer Between 1 - 5*\n");
+                        Console.WriteLine("Input Must Be Integer Between 1 - 6\n");
                 }
                 catch
                 {
@@ -134,6 +134,7 @@ namespace cis237assignment4
         //********************ADD NEW DROID METHOD********************//
         public void AddDroid()
         {
+
             Console.WriteLine("Select Droid Type:\n");
             Console.WriteLine("1 - Protocol  - $1000");
             Console.WriteLine("2 - Utility   - $750");
@@ -160,14 +161,15 @@ namespace cis237assignment4
                     MainMenu();
                 if (droidSelection == 6)
                     Environment.Exit(0);
-                if (menuSelection > 6 || menuSelection < 1)
-                    Console.WriteLine("Input Must Be Integer Between 1 - 6");
+                if (droidSelection > 6 || droidSelection < 1)
+                    Console.WriteLine("Input Must Be Integer Between 1 - 6\n");
             }
             catch
             {
                 Console.WriteLine();
-                Console.WriteLine("Input Error");
+                Console.WriteLine("Input Error\n");
             }
+
         }
         //*************************END ADD DROID METHOD***************************//
 
@@ -194,7 +196,7 @@ namespace cis237assignment4
             newProtocol.CalculateBaseCost();
             newProtocol.CalculateTotalCost();
             totalCost += newProtocol.totalCost;
-            Console.WriteLine(newProtocol + " has been added to droid collection.\n");
+            Console.WriteLine(newProtocol + Environment.NewLine + Environment.NewLine + "Droid has been successfully added to collection.\n");
 
 
         }
@@ -214,7 +216,7 @@ namespace cis237assignment4
             totalCost += newUtility.totalCost;
 
 
-            Console.WriteLine(newUtility + " has been added to droid collection.\n");
+            Console.WriteLine(newUtility + Environment.NewLine + Environment.NewLine + "Droid has been successfully added to collection.\n");
 
         }
         //*********************END ADD UTILITY METHOD*************************//
@@ -232,7 +234,7 @@ namespace cis237assignment4
             totalCost += newJanitor.totalCost;
 
 
-            Console.WriteLine(newJanitor + " has been added to droid collection.\n");
+            Console.WriteLine(newJanitor + Environment.NewLine + Environment.NewLine + "Droid has been successfully added to collection.\n");
 
         }
         //***********************END ADD JANITOR METHOD***********************//
@@ -251,7 +253,7 @@ namespace cis237assignment4
             totalCost += newAstromech.totalCost;
 
 
-            Console.WriteLine(newAstromech + " has been added to droid collection.\n");
+            Console.WriteLine(newAstromech + Environment.NewLine + Environment.NewLine + "Droid has been successfully added to collection.\n");
 
 
         }
@@ -382,7 +384,7 @@ namespace cis237assignment4
         //************METHOD FOR ADDING DROID OPTIONS BASED ON MODEL SELECTED**************//
         public void DroidOptions(string Model)
         {
-            //MATERIAL SELECTION
+            //MATERIAL SELECTION            
             Console.WriteLine("Select " + Model + " Material\n");
             Console.WriteLine("1 - Iron  - $150");
             Console.WriteLine("2 - Steel - $200\n");
@@ -398,15 +400,15 @@ namespace cis237assignment4
                 if (selectionInt == 2)
                     materailSelectionString = "Steel";
 
-
             }
             catch
             {
                 Console.WriteLine();
-                Console.WriteLine("Input Error");
+                Console.WriteLine("Input Error\n");
             }
 
-            //COLOR SELECTION
+
+            //COLOR SELECTION            
             Console.WriteLine("Select " + Model + " Color\n");
             Console.WriteLine("1 - White  - $75");
             Console.WriteLine("2 - Black  - $100\n");
@@ -422,14 +424,13 @@ namespace cis237assignment4
 
                 if (selectionInt == 2)
                     colorSelectionString = "Black";
-
-
             }
             catch
             {
                 Console.WriteLine();
                 Console.WriteLine("Input Error");
             }
+
             //IF MODEL IS PROTOCOL, THEN DETERMINE AMOUNT OF LANGUAGES
             if (Model == "Protocol")
             {
@@ -448,6 +449,7 @@ namespace cis237assignment4
             if (Model == "Utility" || Model == "Janitor" || Model == "Astromech")
             {
                 //TOOLBOX SELECTION
+
                 Console.WriteLine("Toolbox?\n");
                 Console.WriteLine("1 - Yes - $10");
                 Console.WriteLine("2 - No  - $0\n");
@@ -459,12 +461,14 @@ namespace cis237assignment4
                         toolBox = true;
                     if (selectionInt == 2)
                         toolBox = false;
+
                 }
                 catch
                 {
                     Console.WriteLine();
                     Console.WriteLine("Input Error");
                 }
+
                 Console.WriteLine();
 
                 //COMPUTER CONNECTION SELECTION

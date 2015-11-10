@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace cis237assignment4
 {
-    class GenericStack<T>
+    class GenericStack<T> //generic stack used to hold stacks of all the droid models. Used in the bucket sort
     {
 
         //private GenericNode<T> current;

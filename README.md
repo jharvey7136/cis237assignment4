@@ -2,7 +2,12 @@
 ## Due: 11-10-2015
 
 ## Author
+John Harvey
 
+## New Description
+This program will run and prompt the user with a main menu. There will be 6 options to choose from. The user will be able to add a droid to the collection, sort the current droid list
+by model, sort the current droid list by total cost, print the current droid list, reset the droid list by populating it with 20 random
+droids, or exit the program. When the program initially runs, the droid list will be populated with 20 random droids. The main menu will loop until the user decides to exit.
 
 
 ## Description
@@ -66,11 +71,12 @@ The code in the Algorithms book for Stack, Queue, and Merge Sort are in Java. It
 Be sure to think about what the time complexity for the bucket sort will be. Think about how it compares to that of a normal sort such as Merge or Bubble. Also consider the space complexity compared to that of merge or bubble sort. You may see questions related to this on the next exam.
 
 ## Outside Resources Used
-
-
+I begin by using my assignment 3 code. I then used code from the algorithms book to aid with the merge sort, stacks, and queues. I also had help from you. I looked at examples on stackoverflow
+but didn't copy anything. I also referred to our in class assignments to help set up the generic nodes. I watched all the videos you sent us and those helped me
+further understand the concepts of merge sort, stacks, and queues.
 
 ## Known Problems, Issues, And/Or Errors in the Program
-
+I have combed through the code and haven't found any major issues. The program seems to be fully functional and meets all of the assignment requirements.
 
 
 ## Assignment 3 Description for reference
